@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <link href="./indexstyle.css" type="text/css" rel="stylesheet">
+    <title>Fahrenheit to Celcius Temperature Converter</title>
+  </head>
+
+  <body>
+  <div id="header">
+    <h1>Make my life easier in the US...</h1>
+    <p>Especially first winter in Portland Maine...</p>
+    <a href="#footer"></a>
+  </div>
+
+  <div class="portlandmeweather">
+  <h2>Weather in Portland ME</h2>
+  <h3>degree in Fahrenheit</h3>
+  <div id="weather"></div>
+  <div id="desc"></div>
+  <div id="temp"> Current temperature is: </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://api.openweathermap.org/data/2.5/weather?zip=04101,us&appid=26e157cc4760065290aa56d42955a20d",
+      "method": "GET"
+    }
+    $.ajax(settings).done(function (response){
+      console.log(response);
+      let currdesc = response.weather[0].description;
+      $("#desc").append(currdesc);
+      let currtemp = response.main.temp
+      currtemp = Math.floor((currtemp - 273) * (9 / 5) + 32);
+      $("#temp").append(currtemp);
+      //fahrenheit = (kelvin-273) * (9 / 5) + 32;
+    });
+  </script>
+
+  <div class="Converter">
+    <h2>Temperature Converter</h2>
+    <p>Please input a value in Fahrenheit:</p>
+    <p>
+      <label>Fahrenheit</label>
+      <input id="inputFahrenheit" type="number" placeholder="Fahrenheit"
+      oninput="temperatureConverter(this.value)"
+      onchange="temperatureConverter(this.value)">
+    </p>
+    <p>Celcius: <span id="outputCelcius"></span></p>
+
+    <script>
+    function temperatureConverter(valNum) {
+    valNum = parseFloat(valNum);
+    document.getElementById("outputCelcius").innerHTML=Math.floor((valNum-32)/1.8);
+    }
+    </script>
+  </div>
+
+  </body>
+</html>

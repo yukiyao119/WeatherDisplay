@@ -1,0 +1,67 @@
+/* indexstyle.css */
+body{
+  background: rgb(245,245,245);
+  color: green;
+  font-size: 15px;
+  font-family: Helvetica;
+  margin: auto;
+}
+
+h1{
+  font-family: Courier;
+  color: red;
+  font-weight: bolder;
+  font-size: 40px;
+}
+
+h2 {
+  font-family: Courier;
+  color: pink;
+  font-weight: lighter;
+  font-size: 20px;
+}
+
+h3 {
+  font-family: Courier;
+  color: pink;
+  font-weight: lighter;
+  font-size: 18px;
+}
+
+p {
+  font-family: monospace;
+  color: green;
+  font-size: 15
+}
+
+#header{
+  text-align: center;
+  background-position: center;
+  background-image: linear-gradient(-255deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 10%), url("images/southportland.jpg");
+  background-size: cover;
+  padding: 150px;
+  color: white;
+}
+
+#header p {
+  margin: 40px;
+  font-size: 25px;
+  color: inherit;
+}
+
+.Converter{
+  padding: 50px;
+  font-weight: lighter;
+  background-color: white;
+  text-align:center;
+  size: cover;
+}
+
+
+.portlandmeweather{
+  padding: 50px;
+  font-weight: lighter;
+  background-color: white;
+  text-align:center;
+  width: inherit;
+}
