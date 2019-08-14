@@ -1,4 +1,7 @@
 /* style.css */
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap'); /* font-family: 'Abril Fatface', cursive; */
+
+/********** Global **********/
 body{
   background: rgb(245,245,245);
   color: green;
@@ -34,7 +37,68 @@ p {
   font-size: 15
 }
 
-#header{
+
+/********** Header **********/
+
+/******** Nav Bar ********/
+#nav_bar{
+  position: fixed;
+  top: 0;
+  right: 1%;
+  width: 50%;
+  z-index: 1;
+  background: ;
+  /* border-bottom: 1px solid #ccc; */
+  text-align: center;
+}
+
+#nav_bar nav{
+  /* border-left: 1px solid #ccc; */
+}
+
+#nav_bar nav a {
+  display: inline-block;
+  width: 20%;
+  margin: 30px;
+  padding: 0px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  /* border-right: px solid #ccc; */
+  text-decoration: none;
+  font: 20px "Trebuchet MS", Arial, sans-serif;
+}
+
+#nav_bar nav a.selected {
+  background: black;
+  color: white;
+}
+
+#nav_bar nav a:hover {
+  color:gray;
+}
+
+.wrapper {
+  max-width: 960px;
+  margin: auto;
+}
+
+#logo{
+  padding: 0 auto;
+}
+
+#logo h1{
+  position: relative;
+  margin: 0 37% 0;
+  padding: 20px;
+  font-family: 'Abril Fatface', cursive;
+  /* border-bottom: 1px solid #ccc; */
+  font-size: 35px;
+  display: inline-block;
+  color: darkgray;
+}
+
+#brief{
   text-align: center;
   background-position: center;
   background-image: linear-gradient(-255deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 10%), url("images/southportland.jpg");
@@ -43,11 +107,13 @@ p {
   color: white;
 }
 
-#header p {
+#brief p {
   margin: 40px;
   font-size: 25px;
   color: inherit;
 }
+
+
 
 .Converter{
   padding: 50px;
