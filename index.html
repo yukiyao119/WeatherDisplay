@@ -2,85 +2,93 @@
 <html>
   <head>
     <link href="./style.css" type="text/css" rel="stylesheet">
-    <title>Fahrenheit to Celcius Temperature Converter</title>
+    <title>Portland Maine Weather Converter Fahrenheit to Celcius</title>
   </head>
 
   <body>
     <!--/////////// Header //////////-->
     <header>
-      <!--/////////// Nav //////////-->
-      <div id="nav_bar">
-        <div class="wrapper">
-          <nav>
-              <a href="#">HOME</a><a href="#">GALLERY</a>
-          </nav>
-        </div><!-- .wrapper -->
-      </div>
-      <!--/////////// Ends Nav //////////-->
-
-      <!--/////////// Logo //////////-->
-      <div id="logo">
-        <div class="wrapper">
-          <h1>EXPAT-ING</h1>
-        </div><!-- .wrapper -->
-      </div>
-      <!--/////////// Ends Logo //////////-->
-
-      <div id="brief">
-        <div class="wrapper">
-          <h1>Make my life easier in the US...</h1>
-          <p>Especially first winter in Portland Maine...</p>
-          <a href="#footer"></a>
+        <div id="header">
+          <div class="wrapper">
+            <h1>WEATHER CONVERTER</h1>
+          </div><!-- .wrapper -->
         </div>
-      </div><!-- #brief -->
     </header>
     <!--/////////// Ends Header //////////-->
 
-  <div class="portlandmeweather">
-  <h2>Weather in Portland ME</h2>
-  <h3>degree in Fahrenheit</h3>
-  <div id="weather"></div>
-  <div id="desc"></div>
-  <div id="temp"> Current temperature is: </div>
-  </div>
+    <div class="bodyContainer">
+      <!--/////////// Carousel //////////-->
+      <div class="wrapper">
+        <div class="carousel">
+        <input type="checkbox" class="faux-ui-facia"> 
+          <div class="slide" slide="2" annot="The next day is a snow day. South Portland Maine. Photo by Yuki Yao.">
+          <img src="images/snowhouse.jpg" alt="Slide 2">
+          </div>
+        <input type="checkbox" class="faux-ui-facia"> 
+          <div class="slide" slide="1" annot="Short but beatiful autumn time. South Portland Maine. Photo by Yuki Yao.">
+          <img src="images/southportland.jpg" alt="Slide 1">
+          </div>
+        <!-- <div class="counter" count="2"> / 2</div> -->
+        </div>
+      </div>
+      <!--/////////// Ends Carousel //////////-->
+      
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script>
-    var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": "https://api.openweathermap.org/data/2.5/weather?zip=04101,us&appid=26e157cc4760065290aa56d42955a20d",
-      "method": "GET"
-    }
-    $.ajax(settings).done(function (response){
-      console.log(response);
-      let currdesc = response.weather[0].description;
-      $("#desc").append(currdesc);
-      let currtemp = response.main.temp
-      currtemp = Math.floor((currtemp - 273) * (9 / 5) + 32);
-      $("#temp").append(currtemp);
-      //fahrenheit = (kelvin-273) * (9 / 5) + 32;
-    });
-  </script>
+      <!--/////////// Converter //////////-->
+      <!-- <div class="wrapper"> -->
+        <div class="smallContainer">
+          <div class="portlandmeweather">
+            <div id="weather"><h3>Portland ME</h3></div>
+            <div id="desc"></div>
+            <div ><span id="temp">°F</span></div>
+            </div>
+  
+          <div class="Converter">
+            <h3>Not familiar with Fahrenheit? </h3>
+            <div>Convert Fahrenheit to Celcius! ☞</div>
+          </div>
+          <div class="Converter">
+            <input id="inputFahrenheit" type="number" placeholder="Fahrenheit"
+            oninput="temperatureConverter(this.value)"
+            onchange="temperatureConverter(this.value)">
+            <label>°F</label>
+            <div>
+              Celcius: <span id="outputCelcius">°C</span>
+            </div>
+      
+            <script>
+            function temperatureConverter(valNum) {
+              valNum = parseFloat( valNum );
+              document.getElementById("outputCelcius").innerHTML=Math.floor(((valNum-32)/1.8));
+            }
+            </script>
+          </div>
+          <!--/////////// Ends Converter //////////-->
+  
+      
+        </div><!-- carousel -->
+      <!-- </div>wrapper -->
+      
+    </div>
 
-  <div class="Converter">
-    <h2>Temperature Converter</h2>
-    <p>Please input a value in Fahrenheit:</p>
-    <p>
-      <label>Fahrenheit</label>
-      <input id="inputFahrenheit" type="number" placeholder="Fahrenheit"
-      oninput="temperatureConverter(this.value)"
-      onchange="temperatureConverter(this.value)">
-    </p>
-    <p>Celcius: <span id="outputCelcius"></span></p>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-    function temperatureConverter(valNum) {
-    valNum = parseFloat(valNum);
-    document.getElementById("outputCelcius").innerHTML=Math.floor((valNum-32)/1.8);
-    }
+      var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://api.openweathermap.org/data/2.5/weather?zip=04101,us&appid=26e157cc4760065290aa56d42955a20d",
+        "method": "GET"
+      }
+      $.ajax(settings).done(function (response){
+        console.log(response);
+        let currdesc = response.weather[0].description;
+          $("#desc").append(currdesc);
+        let currtemp = response.main.temp
+          currtemp = Math.floor((currtemp - 273) * (9 / 5) + 32);
+          $("#temp").prepend(currtemp);
+      });
     </script>
-  </div>
 
   </body>
+
 </html>

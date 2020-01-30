@@ -4,17 +4,18 @@
 /********** Global **********/
 body{
   background: rgb(245,245,245);
-  color: green;
+  color: pink;
   font-size: 15px;
   font-family: Helvetica;
   margin: auto;
+  opacity: 1.0
 }
 
 h1{
   font-family: Courier;
-  color: red;
+  color: black;
   font-weight: bolder;
-  font-size: 40px;
+  font-size: 80px;
 }
 
 h2 {
@@ -33,49 +34,8 @@ h3 {
 
 p {
   font-family: monospace;
-  color: green;
+  color: blueviolet;
   font-size: 15
-}
-
-
-/********** Header **********/
-
-/******** Nav Bar ********/
-#nav_bar{
-  position: fixed;
-  top: 0;
-  right: 1%;
-  width: 50%;
-  z-index: 1;
-  background: ;
-  /* border-bottom: 1px solid #ccc; */
-  text-align: center;
-}
-
-#nav_bar nav{
-  /* border-left: 1px solid #ccc; */
-}
-
-#nav_bar nav a {
-  display: inline-block;
-  width: 20%;
-  margin: 30px;
-  padding: 0px;
-  text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.8);
-  text-align: center;
-  /* border-right: px solid #ccc; */
-  text-decoration: none;
-  font: 20px "Trebuchet MS", Arial, sans-serif;
-}
-
-#nav_bar nav a.selected {
-  background: black;
-  color: white;
-}
-
-#nav_bar nav a:hover {
-  color:gray;
 }
 
 .wrapper {
@@ -83,51 +43,186 @@ p {
   margin: auto;
 }
 
-#logo{
+.bodyContainer {
+  height: 100%;
+  /* border: solid 2px chartreuse; */
+  display: flex;
+  flex-wrap: wrap
+}
+
+/********** Header **********/
+#header{
   padding: 0 auto;
 }
 
-#logo h1{
+#header h1{
   position: relative;
-  margin: 0 37% 0;
+  margin: 0 33% 0;
   padding: 20px;
   font-family: 'Abril Fatface', cursive;
-  /* border-bottom: 1px solid #ccc; */
-  font-size: 35px;
+  font-size: 1.5em;
   display: inline-block;
   color: darkgray;
 }
 
-#brief{
+/********** Carousel **********/
+.carousel {
+  position: relative;
+  width: 860px;
+  height: 550px;
+  overflow: hidden;
+  margin: 0 auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+.carousel:hover .slide:after,
+.carousel:hover .counter,
+.carousel:hover .slide:before {
+  opacity: 1;
+}
+.slide {
+  float: right;
+  position: absolute;
+  z-index: 1;
+  width: 860px;
+  height: 550px;
+  background-color: #eee;
   text-align: center;
-  background-position: center;
-  background-image: linear-gradient(-255deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 10%), url("images/southportland.jpg");
-  background-size: cover;
-  padding: 150px;
-  color: white;
+  transition: opacity 0.4s;
+  opacity: 1;
+}
+.slide img {
+  width: inherit;
+  height: inherit;
+}
+.slide:before {
+  content: attr(annot);
+  display: block;
+  position: absolute;
+  left: 50px;
+  bottom: 20px;
+  color: rgba(255,255,255,0.9);
+  font-size: 14px;
+  font-weight: 300;
+  z-index: 12;
+  opacity: 0;
+  transition: opacity 0.3s;
+  text-shadow: 0 0 1px #000;
+}
+.slide:after {
+  content: attr(slide);
+  display: block;
+  position: absolute;
+  bottom: 0;
+  transition: opacity 0.3s;
+  width: 100%;
+  height: 80px;
+  opacity: 0;
+  background-image: linear-gradient(transparent, rgba(0,0,0,0.5));
+  text-align: left;
+  text-indent: 750px;
+  line-height: 101px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 0 1px #000;
+}
+.counter {
+  position: absolute;
+  bottom: 20px;
+  right: 1px;
+  height: 20px;
+  width: 60px;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  line-height: 21px;
+  font-size: 13px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.faux-ui-facia {
+  top: 0;
+  right: 0;
+  float: right;
+  position: absolute;
+  margin-top: 0;
+  z-index: 9;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.faux-ui-facia:checked {
+  z-index: 8;
+}
+.faux-ui-facia:checked + .slide {
+  opacity: 0;
+}
+.faux-ui-facia:checked:nth-child(1):checked {
+  z-index: 9;
+}
+.faux-ui-facia:nth-child(1):checked {
+  float: left;
+  z-index: 9;
+}
+.faux-ui-facia:nth-child(1):checked + .slide {
+  opacity: 1;
+}
+.faux-ui-facia:nth-child(1):checked ~ .faux-ui-facia {
+  float: left;
+  z-index: 8;
+}
+.faux-ui-facia:nth-child(1):checked ~ .faux-ui-facia + .slide {
+  opacity: 0;
+}
+.faux-ui-facia:nth-child(1):checked ~ .faux-ui-facia:checked {
+  z-index: 9;
+}
+.faux-ui-facia:nth-child(1):checked ~ .faux-ui-facia:checked + .slide {
+  opacity: 1;
 }
 
-#brief p {
-  margin: 40px;
-  font-size: 25px;
-  color: inherit;
+.smallContainer {
+  position: relative;
+  width: 860px;
+  height: auto;
+  overflow: hidden;
+  margin: 10px auto 50px;
+  padding: 10px;
+  /* border: solid 2px chartreuse; */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: linear-gradient(to right, #525252, #3d72b4);
+  opacity:0.7
 }
-
-
-
-.Converter{
-  padding: 50px;
-  font-weight: lighter;
-  background-color: white;
-  text-align:center;
-  size: cover;
-}
-
 
 .portlandmeweather{
-  padding: 50px;
-  font-weight: lighter;
-  background-color: white;
+  display: inline-box;
+  /* background-color: white; */
   text-align:center;
-  width: inherit;
+  font-family: 'Abril Fatface', cursive;
+
 }
+
+.portlandmeweather h3{
+  font-family: 'Abril Fatface', cursive;
+  margin: 5px;
+}
+
+.Converter{
+  display: inline-box;
+  /* background-color: white; */
+  text-align:center;
+  font-family: 'Abril Fatface', cursive;
+  /* font-weight: lighter; */
+}
+
+.Converter h3 {
+  font-family: 'Abril Fatface', cursive;
+  margin: 5px;
+}
+
+
+
+
+
