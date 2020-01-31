@@ -59,7 +59,7 @@
             <script>
             function temperatureConverter(valNum) {
               valNum = parseFloat( valNum );
-              document.getElementById("outputCelcius").innerHTML=Math.floor(((valNum-32)/1.8));
+              let result = document.getElementById("outputCelcius").innerHTML=Math.floor(((valNum-32)/1.8)) + "°C";
             }
             </script>
           </div>
