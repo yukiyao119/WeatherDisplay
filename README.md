@@ -5,8 +5,6 @@ This is a website that shows Portland Maine and its real-time weather. You can c
 
 ![website](demo/demo.gif)
 
-# Gif
-![gifofwebsite](demo/Portland Maine Weather Converter Fahrenheit to Celcius.gif)
 
 # Openweather API:
 https://api.openweathermap.org
