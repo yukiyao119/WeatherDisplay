@@ -1,7 +1,7 @@
 # Host on Github
 https://yukiyao119.github.io/
 
-This is a website that shows Portland Maine and its real-time weather. 
+A real-time Portland Maine weather display.
 You can browse the photos and convert the degrees from Farenheit to Celcius.
 
 
